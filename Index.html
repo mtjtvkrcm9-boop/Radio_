@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RADIO SOMEWHERE</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <main>
+
+    <!-- HEADER -->
+
+    <header>
+
+      <p>INDEPENDENT INTERNET RADIO</p>
+
+      <h1>radio somewhere.</h1>
+
+      <p>98.6 FM · EST. 2005 · TRANSMITTING FROM SOMEWHERE</p>
+
+    </header>
+
+    <!-- RADIO -->
+
+    <section class="radio-console">
+
+      <div class="radio-label">
+
+        <span>RADIO SOMEWHERE</span>
+
+        <span>FM STEREO</span>
+
+      </div>
+
+      <div class="frequency-display">
+
+        <span class="small-label">CURRENT FREQUENCY</span>
+
+        <div class="frequency">
+
+          <span id="frequency">98.6</span>
+
+          <small>MHz</small>
+
+        </div>
+
+        <p>INDEPENDENT BROADCASTING</p>
+
+        <div class="signal-status">
+
+          <span class="signal-light"></span>
+
+          <span id="signal-text">SIGNAL READY</span>
+
+        </div>
+
+      </div>
+
+      <!-- SOUND WAVES -->
+
+      <div class="wave-display">
+
+        <canvas id="waveCanvas"></canvas>
+
+      </div>
+
+      <!-- CURRENT SONG -->
+
+      <div class="now-playing">
+
+        <img
+
+          id="current-cover"
+
+          src="https://placehold.co/300x300/39465c/c7d3e4?text=RADIO"
+
+          alt="Album artwork"
+
+        >
+
+        <div class="song-information">
+
+          <p>NOW PLAYING</p>
+
+          <h2 id="current-title">Waiting for transmission...</h2>
+
+          <span id="current-artist">No artist selected</span>
+
+          <p id="current-album">RADIO SOMEWHERE</p>
+
+        </div>
+
+      </div>
+
+      <!-- PLAYBACK -->
+
+      <div class="radio-buttons">
+
+        <button id="previous" type="button">◀◀</button>
+
+        <button id="play" type="button">▶</button>
+
+        <button id="next" type="button">▶▶</button>
+
+      </div>
+
+      <!-- TUNING -->
+
+      <div class="tuning">
+
+        <span>88.0</span>
+
+        <input
+
+          type="range"
+
+          id="tuner"
+
+          min="88"
+
+          max="108"
+
+          step="0.1"
+
+          value="98.6"
+
+        >
+
+        <span>108.0</span>
+
+      </div>
+
+      <p class="tuning-caption">TURN THE DIAL · FIND A FREQUENCY</p>
+
+      <!-- VOLUME -->
+
+      <div class="volume-control">
+
+        <label for="volume">VOLUME</label>
+
+        <input
+
+          type="range"
+
+          id="volume"
+
+          min="0"
+
+          max="1"
+
+          step="0.01"
+
+          value="0.7"
+
+        >
+
+      </div>
+
+    </section>
+
+    <!-- SONG INFORMATION -->
+
+    <section class="song-details">
+
+      <p class="section-label">CURRENT TRANSMISSION / ARCHIVE NOTES</p>
+
+      <h2 id="detail-title">A song, somewhere.</h2>
+
+      <div class="detail-section">
+
+        <h3>SONG HISTORY</h3>
+
+        <p id="song-history">
+
+          Select a song from the archive to read its history and little details.
+
+        </p>
+
+      </div>
+
+      <div class="detail-section personal-notes">
+
+        <h3>PERSONAL NOTES</h3>
+
+        <p id="personal-note">
+
+          A place for the things you want to remember about a song.
+
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ARCHIVE -->
+
+    <section class="archive-section">
+
+      <p class="section-label">THE FREQUENCY ARCHIVE</p>
+
+      <h2>All transmissions.</h2>
+
+      <p class="archive-description">
+
+        A collection of songs, records, and things worth keeping.
+
+      </p>
+
+      <div id="archive" class="archive-list">
+
+        <p class="empty-message">No transmissions yet. Add your first song below.</p>
+
+      </div>
+
+    </section>
+
+    <!-- ADD SONG -->
+
+    <section class="add-song-section">
+
+      <p class="section-label">NEW TRANSMISSION</p>
+
+      <h2>Add a song.</h2>
+
+      <p class="archive-description">
+
+        Every song gets its own little place here.
+
+      </p>
+
+      <form id="song-form">
+
+        <label for="song-title">SONG TITLE</label>
+
+        <input
+
+          type="text"
+
+          id="song-title"
+
+          placeholder="Song name..."
+
+          required
+
+        >
+
+        <label for="artist">ARTIST</label>
+
+        <input
+
+          type="text"
+
+          id="artist"
+
+          placeholder="Artist name..."
+
+          required
+
+        >
+
+        <label for="album">ALBUM</label>
+
+        <input
+
+          type="text"
+
+          id="album"
+
+          placeholder="Album name..."
+
+        >
+
+        <label for="year">YEAR</label>
+
+        <input
+
+          type="number"
+
+          id="year"
+
+          placeholder="2004"
+
+          min="1900"
+
+          max="2100"
+
+        >
+
+        <label for="cover">ALBUM ARTWORK</label>
+
+        <input
+
+          type="file"
+
+          id="cover"
+
+          accept="image/*"
+
+        >
+
+        <label for="history">SONG HISTORY / FUN FACTS</label>
+
+        <textarea
+
+          id="history"
+
+          placeholder="Where did the song come from? Any interesting facts about it?"
+
+        ></textarea>
+
+        <label for="note">PERSONAL NOTES</label>
+
+        <textarea
+
+          id="note"
+
+          placeholder="Why do you like this song? What does it remind you of?"
+
+        ></textarea>
+
+        <label for="audio-file">AUDIO FILE (OPTIONAL)</label>
+
+        <input
+
+          type="file"
+
+          id="audio-file"
+
+          accept="audio/*"
+
+        >
+
+        <button type="submit" class="submit-button">
+
+          ADD TO THE ARCHIVE +
+
+        </button>
+
+      </form>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+      <p>RADIO SOMEWHERE · 98.6 FM</p>
+
+      <p>THANK YOU FOR LISTENING.</p>
+
+      <p>TRANSMITTING FROM SOMEWHERE SINCE 2005</p>
+
+    </footer>
+
+  </main>
+
+  <!-- AUDIO PLAYER -->
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>
