@@ -1,0 +1,859 @@
+
+
+/* =====================================
+
+   RADIO 
+
+   BLUE BEDROOM / OLD FM RADIO
+
+   ===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+
+  --background: #dce1e8;
+
+  --paper: #e9edf1;
+
+  --radio: #292f3e;
+
+  --radio-light: #39465c;
+
+  --radio-text: #c7d3e4;
+
+  --accent: #7186a5;
+
+  --accent-light: #aabbd0;
+
+  --text: #303747;
+
+  --muted: #727d8d;
+
+  --border: #aab5c3;
+
+  --shadow: #9ba8b9;
+
+  --main-font: 'Courier Prime', monospace;
+
+  --title-font: Georgia, serif;
+
+}
+
+/* GENERAL */
+
+* {
+
+  box-sizing: border-box;
+
+}
+
+body {
+
+  margin: 0;
+
+  padding: 0;
+
+  background-color: var(--background);
+
+  color: var(--text);
+
+  font-family: var(--main-font);
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  background-image:
+
+    radial-gradient(#7186a510 0.8px, transparent 0.8px);
+
+  background-size: 5px 5px;
+
+}
+
+main {
+
+  width: min(900px, 92%);
+
+  margin: 35px auto;
+
+}
+
+h1, h2, h3 {
+
+  font-family: var(--title-font);
+
+  font-weight: normal;
+
+  color: var(--text);
+
+}
+
+h1 {
+
+  font-size: clamp(38px, 7vw, 66px);
+
+  letter-spacing: -2px;
+
+  line-height: 1.1;
+
+}
+
+h2 {
+
+  font-size: 25px;
+
+  line-height: 1.3;
+
+}
+
+p {
+
+  margin-top: 8px;
+
+}
+
+small {
+
+  color: var(--muted);
+
+}
+
+/* HEADER */
+
+header {
+
+  border-bottom: 1px solid var(--border);
+
+  padding: 15px 0;
+
+  margin-bottom: 35px;
+
+}
+
+header p {
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--muted);
+
+}
+
+/* RADIO CONSOLE */
+
+.radio-console {
+
+  background: var(--paper);
+
+  border: 1px solid var(--border);
+
+  border-radius: 4px;
+
+  padding: 25px;
+
+  margin: 40px 0;
+
+  box-shadow: 5px 6px 0 var(--shadow);
+
+}
+
+.radio-label {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+}
+
+/* FREQUENCY DISPLAY */
+
+.frequency-display {
+
+  background: var(--radio);
+
+  color: var(--radio-text);
+
+  text-align: center;
+
+  padding: 22px;
+
+  margin-top: 22px;
+
+  border: 5px ridge #718099;
+
+  box-shadow: inset 0 0 25px #111827;
+
+}
+
+.small-label {
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: var(--accent-light);
+
+}
+
+.frequency {
+
+  font-family: var(--main-font);
+
+  font-size: 68px;
+
+  line-height: 1.2;
+
+  color: var(--radio-text);
+
+  text-shadow: 0 0 12px #b7cce8;
+
+}
+
+.frequency small {
+
+  color: var(--accent-light);
+
+  font-size: 15px;
+
+}
+
+.frequency-display p {
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: var(--accent-light);
+
+}
+
+/* SIGNAL LIGHT */
+
+.signal-status {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+
+  color: var(--accent-light);
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+}
+
+.signal-light {
+
+  width: 7px;
+
+  height: 7px;
+
+  background: #8da9a0;
+
+  border-radius: 50%;
+
+  box-shadow: 0 0 8px #8da9a0;
+
+}
+
+.signal-light.playing {
+
+  background: #c7e2c1;
+
+  box-shadow: 0 0 10px #c7e2c1;
+
+  animation: signal-blink 1.2s infinite alternate;
+
+}
+
+@keyframes signal-blink {
+
+  from {
+
+    opacity: 0.45;
+
+  }
+
+  to {
+
+    opacity: 1;
+
+  }
+
+}
+
+/* SOUND WAVE DISPLAY */
+
+.wave-display {
+
+  background: #222a38;
+
+  border: 1px solid #7186a5;
+
+  margin: 15px 0;
+
+  padding: 10px;
+
+  height: 105px;
+
+  overflow: hidden;
+
+}
+
+#waveCanvas {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+}
+
+/* CURRENT SONG */
+
+.now-playing {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 18px 0;
+
+  border-bottom: 1px dashed var(--border);
+
+}
+
+.now-playing img {
+
+  width: 85px;
+
+  height: 85px;
+
+  object-fit: cover;
+
+  border: 3px solid white;
+
+  box-shadow: 2px 3px 6px #30374730;
+
+}
+
+.song-information {
+
+  min-width: 0;
+
+}
+
+.now-playing h2 {
+
+  font-family: var(--title-font);
+
+  font-size: 21px;
+
+  margin: 3px 0;
+
+  overflow-wrap: anywhere;
+
+}
+
+.now-playing p {
+
+  font-size: 9px;
+
+  letter-spacing: 1.5px;
+
+  color: var(--muted);
+
+  margin: 0;
+
+}
+
+.now-playing span {
+
+  font-size: 12px;
+
+  color: var(--muted);
+
+}
+
+/* RADIO BUTTONS */
+
+.radio-buttons {
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 18px;
+
+  margin-top: 20px;
+
+}
+
+button {
+
+  background: var(--radio);
+
+  color: var(--radio-text);
+
+  border: 1px solid var(--accent);
+
+  padding: 10px 16px;
+
+  font-family: var(--main-font);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+}
+
+button:hover {
+
+  background: var(--accent);
+
+  color: white;
+
+}
+
+button:focus-visible {
+
+  outline: 2px solid var(--accent);
+
+  outline-offset: 3px;
+
+}
+
+#play {
+
+  min-width: 55px;
+
+  font-size: 19px;
+
+}
+
+/* TUNING AND VOLUME */
+
+.tuning,
+
+.volume-control {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 22px;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color: var(--muted);
+
+}
+
+.tuning input,
+
+.volume-control input {
+
+  flex: 1;
+
+  accent-color: var(--accent);
+
+  cursor: pointer;
+
+}
+
+.tuning-caption {
+
+  text-align: center;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: var(--muted);
+
+}
+
+/* SONG DETAILS */
+
+.song-details {
+
+  margin: 55px 0;
+
+}
+
+.section-label {
+
+  color: var(--accent);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+}
+
+.detail-section {
+
+  background: var(--paper);
+
+  border-left: 3px solid var(--accent);
+
+  padding: 15px 20px;
+
+  margin-top: 15px;
+
+}
+
+.detail-section h3 {
+
+  font-family: var(--main-font);
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  color: var(--muted);
+
+}
+
+.detail-section p {
+
+  white-space: pre-wrap;
+
+  overflow-wrap: anywhere;
+
+}
+
+.personal-notes {
+
+  border-left-style: dashed;
+
+}
+
+/* ARCHIVE */
+
+.archive-section {
+
+  margin-top: 55px;
+
+}
+
+.archive-description {
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+}
+
+.archive-list {
+
+  margin-top: 20px;
+
+}
+
+.archive-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  width: 100%;
+
+  text-align: left;
+
+  background: var(--paper);
+
+  color: var(--text);
+
+  border: 1px solid var(--border);
+
+  padding: 13px;
+
+  margin: 10px 0;
+
+  transition: 0.2s ease;
+
+}
+
+.archive-item:hover,
+
+.archive-item.selected {
+
+  background: #eef2f6;
+
+  border-color: var(--accent);
+
+}
+
+.archive-item img {
+
+  width: 58px;
+
+  height: 58px;
+
+  object-fit: cover;
+
+}
+
+.archive-item-info {
+
+  flex: 1;
+
+  min-width: 0;
+
+}
+
+.archive-item-info strong {
+
+  display: block;
+
+  font-family: var(--title-font);
+
+  font-size: 16px;
+
+  font-weight: normal;
+
+  overflow-wrap: anywhere;
+
+}
+
+.archive-item-info span {
+
+  display: block;
+
+  font-size: 11px;
+
+  color: var(--muted);
+
+}
+
+.empty-message {
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  padding: 15px;
+
+  border: 1px dashed var(--border);
+
+}
+
+/* ADD SONG FORM */
+
+.add-song-section {
+
+  margin-top: 60px;
+
+}
+
+form {
+
+  background: var(--paper);
+
+  border: 1px solid var(--border);
+
+  padding: 22px;
+
+  margin-top: 20px;
+
+}
+
+form label {
+
+  display: block;
+
+  font-size: 10px;
+
+  letter-spacing: 1.5px;
+
+  color: var(--muted);
+
+  margin-top: 12px;
+
+}
+
+input,
+
+textarea,
+
+select {
+
+  width: 100%;
+
+  background: #f4f6f8;
+
+  border: 1px solid var(--border);
+
+  padding: 11px;
+
+  margin: 7px 0 15px;
+
+  color: var(--text);
+
+  font-family: var(--main-font);
+
+  font-size: 13px;
+
+}
+
+input:focus,
+
+textarea:focus,
+
+select:focus {
+
+  outline: 2px solid var(--accent);
+
+  border-color: var(--accent);
+
+}
+
+input[type="file"] {
+
+  font-size: 11px;
+
+}
+
+textarea {
+
+  min-height: 100px;
+
+  resize: vertical;
+
+}
+
+.submit-button {
+
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 14px;
+
+  letter-spacing: 1px;
+
+}
+
+/* FOOTER */
+
+footer {
+
+  text-align: center;
+
+  color: var(--muted);
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  border-top: 1px solid var(--border);
+
+  padding: 25px 0;
+
+  margin-top: 60px;
+
+}
+
+/* LINKS */
+
+a {
+
+  color: var(--accent);
+
+  text-decoration: none;
+
+}
+
+a:hover {
+
+  text-decoration: underline;
+
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  main {
+
+    width: 94%;
+
+    margin: 20px auto;
+
+  }
+
+  .radio-console {
+
+    padding: 15px;
+
+  }
+
+  .frequency {
+
+    font-size: 55px;
+
+  }
+
+  .now-playing img {
+
+    width: 68px;
+
+    height: 68px;
+
+  }
+
+  .now-playing h2 {
+
+    font-size: 18px;
+
+  }
+
+  .archive-item {
+
+    padding: 10px;
+
+  }
+
+  .archive-item img {
+
+    width: 50px;
+
+    height: 50px;
+
+  }
+
+  form {
+
+    padding: 15px;
+
+  }
+
+}
